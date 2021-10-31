@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head th:replace="/fragments/head :: head"></head>
+    <body>
+        <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+        <header th:replace="/fragments/header :: header"></header>
+        <div class="container">
+            <div class="d-flex justify-content-center mt-5">
+                <div th:action="@{/characters/details}" method="GET" th:object="${personaje}" class="card" style="width: 18rem;">
+                    <img th:src="@{/imagen/personaje}+'?id='+*{id}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 th:text="*{nombre}" class="card-title"></h5>
+                        <p th:text="'Edad: '+*{edad}+ ' años.'" class="card-text"></p>
+                        <p th:text="'Peso: '+*{peso}+ ' Kg.'" class="card-text"></p>
+                        <p th:text="'Descripción: '+*{historia}" class="card-text"></p>
+                        <div class="d-flex inline-block">
+                            <a th:href="@{/characters/list}" class="btn btn-dark ms-auto m-1">Volver a la Lista</a>
+                            <a class="btn btn-dark ms-auto m-1" th:href="@{/characters/form}+'?id='+*{id}+'&action=edit'">Editar personaje</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

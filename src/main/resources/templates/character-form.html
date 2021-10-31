@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="es-AR" xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="/fragments/head :: head"></head>
+
+    <body class="bg-dark">
+        <nav th:replace="/fragments/nav-bar :: nav-bar"></nav>
+        <header th:replace="/fragments/header :: header"></header>
+        <div class="container">
+            <div class="card mt-5" style="background-color: #e72d1f;">
+                <div class="card-header d-flex">
+                    <h3>Crear personaje</h3>
+                    <a class="btn btn-dark ms-auto" th:href="@{/characters/list}">Lista de Personajes</a>
+                </div>
+                <div class="card container" style="background-color: #e72d1f;">
+                    <form th:action="@{/characters/save}" method="POST" th:object="${personaje}" enctype="multipart/form-data" class="cart">
+                        <div>
+                            <input type="hidden" th:value="*{id}" name="id">
+                        </div>
+                        <br>
+                        <div>
+                            <input type="hidden" th:value="${action}" name="action">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="nombre" class="form-label"><strong>Nombre</strong></label>
+                                <input type="text" class="formi form-control" th:field="*{nombre}" placeholder="ej: Mickey Mouse">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="edad" class="form-label"><strong>Edad</strong></label>
+                                <input type="number" class="formi form-control" th:field="*{edad}">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="peso" class="form-label"><strong>Peso</strong></label>
+                            <input type="number" class="formi form-control" th:field="*{peso}" placeholder="Ej: 12.9">
+                        </div>
+                        <div class="formi col-md-6">
+                            <label class="form-label "><strong>Sube una foto del personaje!</strong></label>
+                            <input type="file" name="file" class="form-control">
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label for="historia" class="form-label"><strong>Historia</strong></label>
+                            <input type="text" class="formi form-control" th:field="*{historia}">
+                        </div>
+                        <button type="submit" class="btn btn-dark ms-auto"> Guardar</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+                integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+                integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+    </body>
+
+</html> 
